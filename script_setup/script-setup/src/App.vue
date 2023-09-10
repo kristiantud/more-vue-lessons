@@ -1,26 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1 @click="handleHeadingClick">My name is {{name}}, I am {{age}} years old.</h1>
+    <MyButton text="My Button Text"/>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+    import { ref } from 'vue';
+    import MyButton from "@/components/MyButton.vue"
+    // old way to add component: 
+    // import MyButton from @/components/MyButton.vue
+    // after setup():
+    // components: { MyButton }
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    const name = ref('Bob');
+    const age = ref(75);
+
+    // this way, we no longer need the return statement
+    const handleHeadingClick = () => {
+        name.value = 'Steven';
+        age.value = 29;
+    }
+
+
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
